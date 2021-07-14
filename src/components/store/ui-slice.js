@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import { createStore } from "redux";
 
-const initialCartState = {
+const initialUIState = {
     cartIsVisible: false
 };
 // A configuration object
@@ -9,7 +9,7 @@ const uiSlice = createSlice({
     //every slice needs a name(identifer for that slice)
     name: 'ui',
     // initlia state
-    initialState: initialCartState,
+    initialState: initialUIState,
     //Object of all the reducer this slice needs
     reducers: {
         //add methods
