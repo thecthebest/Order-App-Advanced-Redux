@@ -14,15 +14,13 @@ const Products = (props) => {
         {
           DUMMY_PRODUCTS.map((item) => {
             return (
-              <li>
-                <ProductItem
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  price={item.price}
-                  description={item.description}
-                />
-              </li>
+              <ProductItem
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                description={item.description}
+              />
             )
           })
         }
