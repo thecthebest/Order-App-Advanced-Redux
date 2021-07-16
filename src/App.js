@@ -2,8 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { uiActions } from './components/store/ui-slice';
+import Notification from './components/UI/Notification';
 
 function App() {
   const dispatch = useDispatch();
@@ -55,10 +56,17 @@ function App() {
     });
   }, [cartdb, dispatch]);
   return (
-    <Layout>
-      {cart && <Cart />}
-      <Products />
-    </Layout>
+    <Fragment>
+      {notifications && <Notification
+        status={notifications.status}
+        title={notifications.title}
+        message={notifications.message}
+      />}
+      <Layout>
+        {cart && <Cart />}
+        <Products />
+      </Layout>
+    </Fragment>
   );
 }
 
