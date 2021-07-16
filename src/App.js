@@ -5,6 +5,7 @@ import Products from './components/Shop/Products';
 import { Fragment, useEffect } from 'react';
 import { uiActions } from './components/store/ui-slice';
 import Notification from './components/UI/Notification';
+let isInitial = true;
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,10 @@ function App() {
         }
       ));
     };
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
     sendCartData().catch((error) => {
       dispatch(uiActions.showNotification(
         {
