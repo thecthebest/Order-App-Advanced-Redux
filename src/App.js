@@ -14,6 +14,9 @@ function App() {
   const cartdb = useSelector((state) => {
     return state.cart;
   });
+  const notifications = useSelector((state) => {
+    return state.ui.notification;
+  });
 
   useEffect(() => {
     const sendCartData = async () => {
