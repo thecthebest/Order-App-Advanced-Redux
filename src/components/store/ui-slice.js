@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 // import { createStore } from "redux";
 
 const initialUIState = {
-    cartIsVisible: false
+    cartIsVisible: false,
+    notification: null
 };
 // A configuration object
 const uiSlice = createSlice({
@@ -19,6 +20,13 @@ const uiSlice = createSlice({
         toggle(state) {
             // Redux edits the state automatically and what is not edited
             state.cartIsVisible = !state.cartIsVisible;
+        },
+        showNotification(state, action) {
+            state.notification = {
+                status: action.payload.status,
+                title: action.payload.title,
+                message: action.payload.message
+            };
         }
     }
 });
