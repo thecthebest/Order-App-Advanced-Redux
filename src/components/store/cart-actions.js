@@ -14,7 +14,12 @@ export const sendCartData = (cart) => {
             const response = await fetch('https://udemy-9885a-default-rtdb.firebaseio.com/cart.json',
                 {
                     method: 'PUT',
-                    body: JSON.stringify(cart),
+                    body: JSON.stringify(
+                        {
+                            items: cart.items,
+                            totalQuantity: cart.totalQuantity
+                        }
+                    ),
                 }
             );
             if (!response.ok) {
