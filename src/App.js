@@ -22,14 +22,16 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCartData());
-  },[dispatch]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (isInitial) {
       isInitial = false;
       return;
     }
-    dispatch(sendCartData(cartdb));
+    if (cartdb.changed) {
+      dispatch(sendCartData(cartdb));
+    }
   }, [cartdb, dispatch]);
   return (
     <Fragment>
