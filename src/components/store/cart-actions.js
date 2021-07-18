@@ -1,3 +1,4 @@
+import { cartActions } from "./cart-slice";
 import { uiActions } from "./ui-slice";
 
 export const sendCartData = (cart) => {
@@ -38,6 +39,31 @@ export const sendCartData = (cart) => {
                     message: 'Sending cart data failed!'
                 }
             ));
+        }
+    };
+};
+
+export const fetchCartData = () => {
+    return async (dispatch) => {
+        const fetchData = async () => {
+           const response = await fetch('https://udemy-9885a-default-rtdb.firebaseio.com/cart.json');
+           if (!response.ok) {
+               throw new Error('Could not fetch cart data');
+            }
+            return response.json();
+        };
+        try {
+            const cartData = await fetchData();
+            dispatch(cartActions.replaceCart(cartData));
+        }
+        catch(error) {
+            dispatch(uiActions.showNotification(
+                {
+                    status: 'error',
+                    title: 'Error!',
+                    message: 'Fetching cart data failed!'
+                }
+            )); 
         }
     };
 };
